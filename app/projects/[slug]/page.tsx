@@ -12,7 +12,7 @@ type ProjectProps = {
 
 const getProjectDetails = async (slug: string): Promise<ProjectPageData> => {
   const query = `
-    query ProjectQuery() {
+    query ProjectQuery {
       project(where: {slug: "${slug}"}) {
         pageThumbnail {
           url
@@ -61,7 +61,7 @@ export default async function Project({ params: { slug } }: ProjectProps) {
 
 export async function generateStaticParams() {
   const query = `
-    query ProjectsSlugsQuery() {
+    query ProjectsSlugsQuery {
       projects(first: 100) {
         slug
       }
