@@ -11,3 +11,4 @@ coverage/
 *.key
 *.crt
 *.pfx  
+schema.json

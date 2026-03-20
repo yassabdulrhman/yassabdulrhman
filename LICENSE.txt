@@ -19,3 +19,45 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Color plat
+
+Black
+#000000
+Complete absorption of light radiates unmatched sophistication and strength, symbolizing authority, depth and formality.
+~Prussian Blue
+#14213d
+Inky, profound blue filled with gravitas and mystery, conjures historical intrigue and academic tradition.
+~Orange
+#fca311
+Pure vibrant spectrum orange energizes the senses, signaling warmth, movement, and enthusiastic positivity.
+~Alabaster Grey
+#e5e5e5
+Pale, misty grey that whispers of modern elegance and refined calm, imparting balance and understated chic.
+White
+#ffffff
+Brilliant and absolute, reflecting endless possibility, new beginnings, and the crispness of a blank page.
+
+backup schemma
+
+query MyQuery {
+    
+  viewer {
+    project(id: "6417fe38a3574c6f9a5ecc533e23ba92") {
+      environments {
+        name
+        id
+      }
+    }
+  }
+}
+
+query schemaAsCode {
+  viewer {
+    project(id: "6417fe38a3574c6f9a5ecc533e23ba92") {
+      environment(name: "master") {
+        schemaDefinition
+      }
+    }
+  }
+}

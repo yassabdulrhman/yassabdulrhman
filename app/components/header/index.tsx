@@ -49,7 +49,7 @@ export const Header = () => {
             width={100}
             height={100}
             src='/images/YAJ.png'
-            alt='Logo Gaurav Govinda'
+            alt='Logo Yaser Abdulrahman'
           />
         </Link>
 

@@ -65,7 +65,7 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
             width={480}
             height={480}
             src={homeInfo.profilePicture.url}
-            alt='Gaurav Govinda Profile Photo'
+            alt='Yaser Abdulrahman Profile Photo'
             className='w-[360px] h-[360px] lg:w-[480px] lg:h-[480px] mb-6 lg:mb-0 shadow-2xl rounded-lg object-contain'
           />
         </motion.div>
