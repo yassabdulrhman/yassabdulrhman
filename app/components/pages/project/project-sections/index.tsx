@@ -19,7 +19,7 @@ export const ProjectSections = ({ sections }: ProjectSectionProps) => {
           {...fadeUpAnimation}
           transition={{ duration: 0.5 }}
         >
-          <h2 className='text-2xl md:text-3xl font-medium text-gray-300'>
+          <h2 className='text-2xl md:text-3xl font-bold text-brand-white mb-6'>
             {section.title}
           </h2>
           <Image

@@ -22,9 +22,9 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
       <motion.div
         className='absolute inset-0 z-[-1]'
         style={{
-          background: `url(/images/hero-bg.png) no-repeat center/cover, url(${project.pageThumbnail.url}) no-repeat center/cover`
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.95) 100%), url(${project.pageThumbnail.url}) no-repeat center/cover`
         }}
-        initial={{ opacity: 0, scale: 0.5 }}
+        initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       />
@@ -34,7 +34,7 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
         className='text-center items-center sm:[&>h3]:text-4xl'
       />
       <motion.div
-        className='text-gray-400 text-center max-w-[640px] my-4 sm:my-6 text-sm sm:text-base'
+        className='text-brand-alabaster/55 text-center max-w-[640px] my-4 sm:my-6 text-sm sm:text-base leading-relaxed'
         {...fadeUpAnimation}
       >
         <RichText content={project.description.raw} />

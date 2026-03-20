@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { NavItem } from './nav-item'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_ITEMS = [
   {
@@ -12,15 +12,11 @@ const NAV_ITEMS = [
     href: '/'
   },
   {
-    label: 'Blog',
-    href: 'https://gauravblog.vercel.app'
-  },
-  {
     label: 'Projects',
     href: '/projects'
   },
   {
-    label: 'Skill',
+    label: 'Skills',
     href: '/#skills'
   },
   {
@@ -38,51 +34,52 @@ export const Header = () => {
 
   return (
     <motion.header
-      initial={{ top: -100 }}
-      animate={{ top: 0 }}
-      transition={{ duration: 0.5 }}
-      className='fixed top-0 w-full z-10 h-24 flex items-center justify-center bg-gray-900 bg-opacity-95 backdrop-blur-sm'
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className='fixed top-0 w-full z-50 h-20 flex items-center justify-center border-b border-brand-alabaster/10 bg-brand-black/90 backdrop-blur-md'
     >
       <div className='container flex items-center justify-between'>
-        <Link href='/'>
-          <Image
-            width={100}
-            height={100}
-            src='/images/YAJ.png'
-            alt='Logo Yaser Abdulrahman'
-          />
+        {/* Logo / Wordmark */}
+        <Link href='/' className='flex items-center gap-2 group'>
+          <span className='font-mono text-brand-orange font-bold text-lg tracking-tight group-hover:text-amber-400 transition-colors'>
+            YAJ
+          </span>
+          <span className='cursor-blink font-mono text-brand-orange/60 text-lg'>_</span>
         </Link>
 
-        {/* Hamburger Menu Button */}
+        {/* Hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className='md:hidden text-gray-400 hover:text-gray-50 focus:outline-none'
+          className='md:hidden text-brand-alabaster/60 hover:text-brand-white focus:outline-none transition-colors'
           aria-label='Toggle menu'
         >
-          <div className='w-6 h-6 flex flex-col justify-center items-center'>
-            <span className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
-            <span className={`block w-5 h-0.5 bg-current transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-            <span className={`block w-5 h-0.5 bg-current transition-transform duration-300 ${isOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
+          <div className='w-6 h-5 flex flex-col justify-between'>
+            <span className={`block w-full h-px bg-current transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
+            <span className={`block w-full h-px bg-current transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-full h-px bg-current transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
           </div>
         </button>
 
         {/* Desktop Navigation */}
-        <nav className='hidden md:flex items-center gap-4 lg:gap-10'>
+        <nav className='hidden md:flex items-center gap-8'>
           {NAV_ITEMS.map((item) => (
             <NavItem key={item.label} {...item} />
           ))}
         </nav>
+      </div>
 
-        {/* Mobile Navigation */}
+      {/* Mobile Navigation */}
+      <AnimatePresence>
         {isOpen && (
           <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className='absolute top-24 left-0 w-full bg-gray-900 bg-opacity-95 md:hidden'
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className='absolute top-20 left-0 w-full bg-brand-black border-b border-brand-alabaster/10 md:hidden overflow-hidden'
           >
-            <div className='container py-4'>
-              <div className='flex flex-col gap-4'>
+            <div className='container py-6'>
+              <div className='flex flex-col gap-5'>
                 {NAV_ITEMS.map((item) => (
                   <NavItem key={item.label} {...item} onClick={() => setIsOpen(false)} />
                 ))}
@@ -90,7 +87,7 @@ export const Header = () => {
             </div>
           </motion.nav>
         )}
-      </div>
+      </AnimatePresence>
     </motion.header>
   )
 }

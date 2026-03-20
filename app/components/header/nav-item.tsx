@@ -18,10 +18,13 @@ export const NavItem = ({ label, href, onClick }: NavItemProps) => {
       href={href}
       onClick={onClick}
       className={
-        cn('text-gray-400 flex items-center gap-2 font-medium font-mono', isActive && 'text-gray-50')
+        cn(
+          'text-brand-alabaster/50 flex items-center gap-1.5 text-sm font-mono tracking-wide hover:text-brand-white transition-colors duration-200',
+          isActive && 'text-brand-orange'
+        )
       }
     >
-      <span className='text-emerald-400'>#</span>
+      <span className={cn('text-brand-orange/60', isActive && 'text-brand-orange')}>//</span>
       {label}
     </Link>
   )

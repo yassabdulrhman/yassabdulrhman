@@ -1,4 +1,3 @@
-import { HorizontalDivider } from '@/app/components/divider/horizontal'
 import { SectionsTitle } from '@/app/components/sections-title'
 import { ProjectCard } from './project-card'
 import { Link } from '@/app/components/link'
@@ -10,27 +9,41 @@ type HighlightedProjectsProps = {
   projects: Project[]
 }
 
+// Detect SFES project by slug or title keywords
+const isFlagship = (project: Project) => {
+  const key = (project.slug + project.title).toLowerCase()
+  return key.includes('sfes') || key.includes('school') || key.includes('flagship')
+}
+
 export const HighlightedProjects = ({ projects }: HighlightedProjectsProps) => {
+  const sorted = [...(projects ?? [])].sort((a, b) => {
+    // Push flagship to top
+    if (isFlagship(a) && !isFlagship(b)) return -1
+    if (!isFlagship(a) && isFlagship(b)) return 1
+    return 0
+  })
+
   return (
-    <section className='container py-16'>
+    <section id='projects' className='container py-24'>
       <SectionsTitle subtitle='highlights' title='Featured Projects' />
-      <HorizontalDivider className='mb-16' />
-      <div>
-        {projects?.slice(0, 2).map((project) => (
-          <div key={project.slug}>
-            <ProjectCard project={project} />
-            <HorizontalDivider className='my-16' />
-          </div>
+
+      <div className='mt-14 flex flex-col gap-6'>
+        {sorted.slice(0, 3).map((project, i) => (
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            featured={i === 0 && isFlagship(project)}
+          />
         ))}
-        <p className='flex items-center gap-1.5'>
-          <span className='text-gray-400'>Interested?</span>
-          <Link className='inline-flex' href='/projects'>
-            <Button className='w-max shadow-button'>
-              See all
-              <HiArrowNarrowRight />
-            </Button>
-          </Link>
-        </p>
+      </div>
+
+      <div className='mt-12 flex items-center gap-4'>
+        <span className='text-brand-alabaster/40 text-sm font-mono'>// more work available</span>
+        <Link href='/projects'>
+          <Button className='w-max shadow-button text-xs tracking-widest uppercase'>
+            All Projects <HiArrowNarrowRight size={14} />
+          </Button>
+        </Link>
       </div>
     </section>
   )

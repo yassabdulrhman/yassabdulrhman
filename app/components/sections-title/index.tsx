@@ -22,14 +22,14 @@ export const SectionsTitle = ({
   return (
     <div className={cn('flex flex-col gap-4', className)}>
       <motion.span
-        className='font-mono text-sm text-emerald-400'
+        className='font-mono text-sm text-brand-orange'
         {...animProps}
         transition={{ duration: 0.5 }}
       >
         {`../${subtitle}`}
       </motion.span>
       <motion.h3
-        className='text-3xl font-medium'
+        className='text-3xl font-bold text-brand-white'
         {...animProps}
         transition={{ duration: 0.5, delay: 0.2 }}
       >

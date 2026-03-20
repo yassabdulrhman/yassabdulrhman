@@ -4,24 +4,58 @@
 
 @layer base {
   body {
-    @apply bg-gray-900 text-gray-100
+    @apply bg-brand-black text-brand-white;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
 .container {
-  @apply mx-auto w-full max-w-[1200px] px-6
+  @apply mx-auto w-full max-w-[1200px] px-6;
 }
 
+/* Scrollbar */
 *::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #374151;
-  border-radius: 5px;
+  background: #0a0a0a;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #10b981;
+  background-color: #fca311;
   border-radius: 14px;
+}
+
+/* Grid background utility */
+.bg-grid {
+  background-image: linear-gradient(rgba(252, 163, 17, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(252, 163, 17, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1.2s step-start infinite;
+}
+
+/* Orange glow pulse */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(252, 163, 17, 0.3); }
+  50% { box-shadow: 0 0 24px rgba(252, 163, 17, 0.6); }
+}
+
+.glow-orange {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }

@@ -1,7 +1,6 @@
 'use client'
 
 import { TbArrowNarrowUp } from 'react-icons/tb'
-import { Button } from '../button'
 import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -9,10 +8,7 @@ export const BackToTop = () => {
   const [show, setShow] = useState(false)
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const handleScroll = useCallback(() => {
@@ -28,19 +24,16 @@ export const BackToTop = () => {
   return (
     <AnimatePresence>
       {show && (
-        <motion.div
-          className='fixed right-4 bottom-4 z-20'
-          initial={{ opacity: 0, right: -10 }}
-          animate={{ opacity: 1, right: 16 }}
-          exit={{ opacity: 0, right: -10 }}
+        <motion.button
+          onClick={scrollToTop}
+          className='fixed right-5 bottom-5 z-50 w-10 h-10 flex items-center justify-center rounded bg-brand-orange hover:bg-amber-400 text-brand-black shadow-button transition-colors duration-200'
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          aria-label='Back to top'
         >
-          <Button
-            onClick={scrollToTop}
-            className='shadow-lg shadow-emerald-400/20'
-          >
-            <TbArrowNarrowUp size={20} />
-          </Button>
-        </motion.div>
+          <TbArrowNarrowUp size={18} strokeWidth={2.5} />
+        </motion.button>
       )}
     </AnimatePresence>
   )

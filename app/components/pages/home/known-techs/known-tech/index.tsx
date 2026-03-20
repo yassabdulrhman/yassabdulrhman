@@ -15,12 +15,14 @@ export const KnownTech = ({ tech }: KnownTechProps) => {
   ).replace('ago', '')
 
   return (
-    <div className='p-6 rounded-lg bg-gray-600/20 text-gray-500 flex flex-col gap-2 hover:text-emerald-500 hover:bg-gray-600/30 transition-all'>
-      <div className='flex items-center justify-between'>
-        <p className='font-medium'>{tech.name}</p>
-        <CMSIcon icon={tech.iconSvg} />
+    <div className='group p-4 rounded bg-brand-prussian/40 border border-brand-alabaster/10 flex items-center justify-between gap-3 hover:border-brand-orange/40 hover:bg-brand-prussian/60 transition-all duration-200 cursor-default'>
+      <div className='flex items-center gap-3'>
+        <div className='text-brand-alabaster/50 group-hover:text-brand-orange transition-colors duration-200 text-lg'>
+          <CMSIcon icon={tech.iconSvg} />
+        </div>
+        <p className='font-mono text-sm text-brand-alabaster/70 group-hover:text-brand-white transition-colors duration-200 font-medium'>{tech.name}</p>
       </div>
-      <span>{relativeTime} of experience</span>
+      <span className='font-mono text-xs text-brand-alabaster/30 group-hover:text-brand-orange/60 transition-colors duration-200 whitespace-nowrap'>{relativeTime}</span>
     </div>
   )
 }

@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Toaster />
         <BackToTop />
         <Header />
-        <main className="pt-24">
+        <main className="pt-20">
           {children}
         </main>
         <ContactForm />
