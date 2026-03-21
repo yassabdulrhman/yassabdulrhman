@@ -1,10 +1,12 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { NavItem } from './nav-item'
 import { motion, AnimatePresence } from 'framer-motion'
+import { HiDownload } from 'react-icons/hi'
+
+const CV_PATH = '/assets/Yaser_Abdulrahman_Aljedaie-Full_Stack_Engineer.pdf'
 
 const NAV_ITEMS = [
   {
@@ -66,6 +68,14 @@ export const Header = () => {
           {NAV_ITEMS.map((item) => (
             <NavItem key={item.label} {...item} />
           ))}
+          <a
+            href={CV_PATH}
+            download='Yaser_Abdulrahman_CV.pdf'
+            className='inline-flex items-center gap-1.5 px-4 py-1.5 font-mono text-xs font-bold tracking-widest uppercase border border-brand-orange/50 text-brand-orange rounded hover:bg-brand-orange hover:text-brand-black transition-all duration-200'
+          >
+            <HiDownload size={12} />
+            CV
+          </a>
         </nav>
       </div>
 
@@ -83,6 +93,15 @@ export const Header = () => {
                 {NAV_ITEMS.map((item) => (
                   <NavItem key={item.label} {...item} onClick={() => setIsOpen(false)} />
                 ))}
+                <a
+                  href={CV_PATH}
+                  download='Yaser_Abdulrahman_CV.pdf'
+                  onClick={() => setIsOpen(false)}
+                  className='inline-flex items-center gap-2 font-mono text-sm text-brand-orange/80 hover:text-brand-orange transition-colors duration-200'
+                >
+                  <HiDownload size={15} />
+                  Download CV
+                </a>
               </div>
             </div>
           </motion.nav>

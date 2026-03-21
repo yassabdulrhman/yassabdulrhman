@@ -1,10 +1,12 @@
 'use client'
 
 import { Button } from '@/app/components/button'
-import { HiArrowNarrowRight, HiArrowNarrowDown } from 'react-icons/hi'
+import { HiArrowNarrowRight, HiArrowNarrowDown, HiDownload } from 'react-icons/hi'
 import { HomePageInfo } from '@/app/types/page-info'
 import { CMSIcon } from '@/app/components/cms-icon'
 import { motion } from 'framer-motion'
+
+const CV_PATH = '/assets/Yaser_Abdulrahman_Aljedaie-Full_Stack_Engineer.pdf'
 
 type HeroSectionProps = {
   homeInfo: HomePageInfo
@@ -124,6 +126,14 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
               >
                 Contact Me
               </button>
+              <a
+                href={CV_PATH}
+                download='Yaser_Abdulrahman_CV.pdf'
+                className='inline-flex items-center gap-2 px-7 py-3.5 text-xs font-bold tracking-widest uppercase border border-brand-orange/40 text-brand-orange/80 rounded hover:bg-brand-orange/10 hover:border-brand-orange hover:text-brand-orange transition-all duration-200'
+              >
+                <HiDownload size={14} />
+                Download CV
+              </a>
             </motion.div>
 
             {/* Socials */}
